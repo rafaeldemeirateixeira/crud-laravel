@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('clientes-list');
+});
+
+Route::get('/cadastro', function () {
+    return view('clientes-form');
 });
