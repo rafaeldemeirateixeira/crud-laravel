@@ -1,5 +1,5 @@
 FROM php:7.3.6-fpm-alpine3.9
-RUN apk add --no-cache openssl bash mysql-client nodejs npm alpine-sdk autoconf librdkafka-dev vim
+RUN apk add --no-cache openssl bash mysql-client nodejs npm alpine-sdk autoconf vim
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN ln -s /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
