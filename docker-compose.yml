@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mindtec:
+    build: .
+    volumes: 
+      - ./:/var/www
+    depends_on:
+      - mindtec-mysql
+
+  mindtec-mysql:
+    image: mysql:5.7.22
+    command: --innodb-use-native-aio=0
+    restart: always
+    ports:
+      - "3306"
+    volumes:
+      - "./.docker/dbdata:/var/lib/mysql"
+    environment:
+      MYSQL_DATABASE: mindtec
+      MYSQL_ROOT_PASSWORD: root
+
+  mindtec-nginx:
+    build: ./.docker/nginx
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - mindtec
