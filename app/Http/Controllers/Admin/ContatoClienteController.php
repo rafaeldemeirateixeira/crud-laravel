@@ -28,10 +28,13 @@ class ContatoClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($IdCliente, $id)
     {
         try {
-            $Contato = ContatoCliente::find($id)
+            $Contato = ContatoCliente::where([
+                    ['IdContato', $id],
+                    ['IdCliente', $IdCliente]
+                ])
                 ->update(['BolAtivo' => false]);
 
             if ($Contato) {

@@ -184,6 +184,14 @@ class ClientesController extends Controller
                 ['BolAtivo', true]
             ])->first();
 
+        if ($Cliente == null) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'O cliente informado não foi encontrado ou já foi removido.',
+                'error' => ''
+            ]);
+        }
+
         DB::beginTransaction();
 
         try {
