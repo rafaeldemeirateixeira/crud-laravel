@@ -19,7 +19,8 @@ class CreateContatosClientesTable extends Migration
             $table->foreign('IdCliente')->references('IdCliente')->on('Clientes');
             $table->string('TipoContato');
             $table->string('DescContato');
-            $table->integer('BolAtivo');
+            $table->integer('BolAtivo')->default(1);
+            $table->timestamps();
         });
     }
 

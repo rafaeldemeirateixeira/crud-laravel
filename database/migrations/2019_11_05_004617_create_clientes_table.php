@@ -17,7 +17,8 @@ class CreateClientesTable extends Migration
             $table->increments('IdCliente');
             $table->string('RazaoSocial');
             $table->date('DataCadastro');
-            $table->integer('BolAtivo');
+            $table->integer('BolAtivo')->default(1);
+            $table->timestamps();
         });
     }
 
