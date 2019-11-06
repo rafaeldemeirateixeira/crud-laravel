@@ -14,7 +14,7 @@ Caso não utilize Docker, faça o `git clone` no ambiente desejado e ignore os c
 ~$ docker-compose up -d
 ~$ docker-compose exec mindtec bash
 
-//Docker bash
+//Docker bash ou qualquer que seja o ambiente que esteja rodando.
 ~$bash composer update
 ~$bash cp .env.example .env
 //Altere o arquivo .env
