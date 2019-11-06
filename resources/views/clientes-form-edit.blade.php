@@ -1,12 +1,12 @@
 @section('extra-js')
 <script>
-    function deleteContato(IdContato, _this) {
+    function deleteContato(IdContato, IdCliente, _this) {
         swal.fire('Aguarde...');
         swal.showLoading();
 
         $.ajax({
             type: "POST",
-            url: `/contatos/${IdContato}`,
+            url: `/cliente/${IdCliente}/contatos/${IdContato}`,
             data: {
                 _method: 'DELETE',
                 _token: $("input[name='_token']").val()
@@ -34,7 +34,7 @@
                     <input type="text" class="form-control" name="DescContato[]" placeholder="Contato">
                 </td>
                 <td width="5%">
-                    <button type="button" class="btn btn-danger float-right" onclick="deleteContato(0, this)">
+                    <button type="button" class="btn btn-danger float-right" onclick="deleteContato(0, 0, this)">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
@@ -78,7 +78,7 @@
                                 placeholder="Contato">
                         </td>
                         <td width="5%">
-                            <button type="button" class="btn btn-danger float-right" onclick="deleteContato({{ $Contato->IdContato }}, this)">
+                            <button type="button" class="btn btn-danger float-right" onclick="deleteContato({{ $Contato->IdContato }}, {{ $Contato->IdCliente }}, this)">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>
