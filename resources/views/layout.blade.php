@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('extra-header')
-    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -27,6 +26,7 @@
         @yield('content')
     </div>
 
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('extra-js')
 </body>
 </html>
