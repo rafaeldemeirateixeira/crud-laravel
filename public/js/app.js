@@ -39833,6 +39833,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./sweetalert */ "./resources/js/sweetalert.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39878,7 +39880,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     encrypted: true
 // });
 
-window.swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/***/ }),
+
+/***/ "./resources/js/sweetalert.js":
+/*!************************************!*\
+  !*** ./resources/js/sweetalert.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+try {
+  window.swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+} catch (e) {}
 
 /***/ }),
 
@@ -39900,8 +39913,8 @@ window.swal = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/rafael/Projetos/mindtec/mindtec/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/rafael/Projetos/mindtec/mindtec/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/rafael/Projetos/mindtec/test/mindtec-laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/rafael/Projetos/mindtec/test/mindtec-laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

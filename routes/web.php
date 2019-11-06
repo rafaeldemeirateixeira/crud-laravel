@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('clientes-list');
+    return redirect()->route('clientes.index');
 });
 
 Route::resource('clientes', 'Admin\ClientesController')->except([
