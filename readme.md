@@ -24,9 +24,11 @@ Caso não utilize Docker, faça o `git clone` no ambiente desejado e ignore os c
     DB_DATABASE=mindtec
     DB_USERNAME=root
     DB_PASSWORD=root
-    
+
+~$bash php artisan key:generate
 ~$bash php artisan migrate
 ~$bash php artisan ui bootstrap
+
 ~$bash npm install
 ~$bash npm run dev
 
