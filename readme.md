@@ -16,6 +16,7 @@ Este projeto Laravel 6.x. Foi desenvolvido e testado utilizando Docker para prov
 //Docker bash
 ~$bash composer update
 ~$bash cp .env.example .env
+//Altere o arquivo .env
 ~$bash vim .env
 
     DB_HOST=mindtec-mysql
