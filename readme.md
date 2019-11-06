@@ -8,6 +8,7 @@ Este projeto Laravel 6.x. Foi desenvolvido e testado utilizando Docker para prov
 
 ## Instalação inicial
 ### 1. Usando Docker
+Caso não utilize Docker, faça o `git clono` no ambiente desejado e ignore os comandos `docker-compose`.
 ```
 ~$ git clone <projeto git>
 ~$ docker-compose up -d
