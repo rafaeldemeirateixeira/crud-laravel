@@ -9,6 +9,7 @@ Este projeto Laravel 6.x. Foi desenvolvido e testado utilizando Docker para prov
 ## Instalação inicial
 ### 1. Usando Docker
 ```
+~$ git clone <projeto git>
 ~$ docker-compose up -d
 ~$ docker-compose exec mindtec bash
 
