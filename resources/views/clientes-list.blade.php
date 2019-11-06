@@ -18,7 +18,9 @@
                 swal.close();
 
                 if (response.status == 1) {
-                    swal.fire('Ok!', response.message);
+                    swal.fire('Ok!', response.message).then(() => {
+                        window.location.href = '/clientes'
+                    });
                 } else {
                     swal.fire('Ops!', response.message);
                 }
