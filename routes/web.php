@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('clientes-list');
 });
 
-Route::get('/cadastro', function () {
-    return view('clientes-form');
-});
+Route::resource('clientes', 'Admin\ClientesController')->except([
+    'show'
+]);
+Route::resource('cliente/{IdCliente}/contatos', 'Admin\ContatoClienteController')->only([
+    'index', 'destroy'
+]);
