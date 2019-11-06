@@ -24,6 +24,7 @@ Este projeto Laravel 6.x. Foi desenvolvido e testado utilizando Docker para prov
     DB_PASSWORD=root
     
 ~$bash php artisan migrate
+~$bash php artisan ui bootstrap
 ~$bash npm install
 ~$bash npm run dev
 
