@@ -9,10 +9,10 @@
         $('#add-contact').click(function(){
             var tr = `<tr>
                 <td>
-                    <input type="text" class="form-control" placeholder="Tipo de contato. [Telefone, Celular, Email, etc...]">
+                    <input type="text" class="form-control" name="TipoContato[]" placeholder="Tipo de contato. [Telefone, Celular, Email, etc...]">
                 </td>
                 <td>
-                    <input type="text" class="form-control" placeholder="Contato">
+                    <input type="text" class="form-control" name="DescContato[]" placeholder="Contato">
                 </td>
                 <td width="5%">
                     <button type="button" class="btn btn-danger float-right" onclick="deleteContato(this)">
@@ -30,8 +30,8 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
-            <label for="email">Razão Social:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            <label for="RazaoSocial">Razão Social:</label>
+            <input type="text" class="form-control" id="RazaoSocial" name="RazaoSocial" placeholder="Razão Social">
         </div>
     </div>
 </div>
