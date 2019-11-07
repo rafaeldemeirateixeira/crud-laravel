@@ -86,17 +86,6 @@ class ClientesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -104,7 +93,17 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        $Cliente = Cliente::find($id);
+        $Cliente = Cliente::where([
+                ['IdCliente', $id],
+                ['BolAtivo', true]
+            ])
+            ->first();
+
+        if (is_null($Cliente)) {
+            return redirect()->route('clientes.index')
+                ->withErrors('O cliente informado não foi encontrado ou foi desativado');
+        }
+
         $ContatoCliente = $Cliente->contatos()
             ->where('BolAtivo', true)
             ->get();
