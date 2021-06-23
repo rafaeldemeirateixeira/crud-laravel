@@ -1,17 +1,23 @@
-version: '3'
+version: '3.8'
 services:
   application:
     build: .
+    restart: always
+    labels:
+      - "traefik.enable=false"
+    tty: true
     volumes:
       - ./:/var/www
     networks:
       - internal
     depends_on:
       - mysql
-
   mysql:
     image: mysql:5.7.22
     restart: always
+    labels:
+      - "traefik.enable=false"
+    tty: true
     ports:
       - "3306"
     networks:
@@ -24,11 +30,12 @@ services:
 
   nginx:
     image: nginx:latest
+    container_name: nginx
     restart: always
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.http.routers.nginx.rule=Host(`api.rasteixeira.ga`)"
+      - "traefik.http.routers.nginx.rule=Host(`staging.api.rasteixeira.ga`)"
       - "traefik.http.routers.nginx.entrypoints=websecure"
       - "traefik.http.routers.nginx.tls=true"
       - "traefik.http.routers.nginx.tls.certresolver=letsencrypt"
@@ -41,10 +48,8 @@ services:
       - internal
     depends_on:
       - application
-
 networks:
   web:
     external: true
-
   internal:
     external: false
