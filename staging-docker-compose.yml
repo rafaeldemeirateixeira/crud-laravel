@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   application:
+    container_name: application
     build: .
     restart: always
     labels:
@@ -10,23 +11,22 @@ services:
       - ./:/var/www
     networks:
       - internal
-    depends_on:
-      - mysql
-  mysql:
-    image: mysql:5.7.22
-    restart: always
-    labels:
-      - "traefik.enable=false"
-    tty: true
-    ports:
-      - "3306"
-    networks:
-      - internal
-    volumes:
-      - "./.docker/dbdata:/var/lib/mysql"
-    environment:
-      MYSQL_DATABASE: application
-      MYSQL_ROOT_PASSWORD: root
+
+  # mysql:
+  #   image: mysql:5.7.22
+  #   restart: always
+  #   labels:
+  #     - "traefik.enable=false"
+  #   tty: true
+  #   ports:
+  #     - "3306"
+  #   networks:
+  #     - internal
+  #   volumes:
+  #     - "./.docker/dbdata:/var/lib/mysql"
+  #   environment:
+  #     MYSQL_DATABASE: application
+  #     MYSQL_ROOT_PASSWORD: secret
 
   nginx:
     image: nginx:latest
@@ -48,8 +48,24 @@ services:
       - internal
     depends_on:
       - application
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+    networks:
+      - internal
+      - web
+    volumes:
+      - redis_data:/data
+
 networks:
   web:
     external: true
   internal:
     external: false
+
+volumes:
+  redis_data:

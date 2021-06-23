@@ -21,10 +21,10 @@ Caso não utilize Docker, faça o `git clone` no ambiente desejado e ignore os c
 ~$bash cp .env.example .env
 ~$bash vim .env
 
-    DB_HOST=mindtec-mysql
-    DB_DATABASE=mindtec
+    DB_HOST=mysql
+    DB_DATABASE=laravel
     DB_USERNAME=root
-    DB_PASSWORD=root
+    DB_PASSWORD=secret
 
 ~$bash php artisan key:generate
 ~$bash php artisan migrate
