@@ -1,0 +1,48 @@
+version: '3'
+services:
+  application:
+    build: .
+    volumes:
+      - ./:/var/www
+    networks:
+      - internal
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7.22
+    restart: always
+    ports:
+      - "3306"
+    networks:
+      - internal
+    volumes:
+      - "./.docker/dbdata:/var/lib/mysql"
+    environment:
+      MYSQL_DATABASE: application
+      MYSQL_ROOT_PASSWORD: root
+
+  nginx:
+    build: ./.docker/nginx
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.nginx.rule=Host(`api.rasteixeira.ga`)"
+      - "traefik.http.routers.nginx.entrypoints=websecure"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.routers.nginx.tls.certresolver=letsencrypt"
+    volumes:
+      - ./:/var/www
+    networks:
+      - web
+      - internal
+    depends_on:
+      - application
+
+networks:
+  web:
+    external: true
+
+  internal:
+    external: false
