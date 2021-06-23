@@ -1,15 +1,14 @@
 version: '3'
 services:
-  mindtec:
+  application:
     build: .
-    volumes: 
+    volumes:
       - ./:/var/www
     depends_on:
-      - mindtec-mysql
+      - mysql
 
-  mindtec-mysql:
+  mysql:
     image: mysql:5.7.22
-    command: --innodb-use-native-aio=0
     restart: always
     ports:
       - "3306"
@@ -19,12 +18,13 @@ services:
       MYSQL_DATABASE: mindtec
       MYSQL_ROOT_PASSWORD: root
 
-  mindtec-nginx:
-    build: ./.docker/nginx
+  nginx:
+    image: nginx:latest
     restart: always
     ports:
       - "8000:80"
     volumes:
       - ./:/var/www
+      - ./.docker/services/nginx/app.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - mindtec
+      - application
