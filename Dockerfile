@@ -1,4 +1,4 @@
-FROM php:7.3.6-fpm-alpine3.9
+FROM php:8.0-fpm
 RUN apk add --no-cache openssl bash mysql-client nodejs npm alpine-sdk autoconf vim
 RUN docker-php-ext-install pdo pdo_mysql
 
